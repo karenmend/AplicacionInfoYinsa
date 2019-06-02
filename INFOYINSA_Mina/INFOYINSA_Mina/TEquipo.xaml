@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="INFOYINSA_Mina.TEquipo"
+             >
+
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <StackLayout>
+                <Label Text="Equipo:"
+                    x:Name="lbl_equipos"
+                     />
+                <Picker Title="Equipo" 
+                        x:Name="pck_equipos"
+                        ItemDisplayBinding="equipos"
+                        />
+                <DatePicker x:Name="datePck_fecha" 
+                        
+                            />
+                <StackLayout Spacing="5" Margin="10">
+                    <Label Text="Horas Trabajadas" />
+                    <Entry Placeholder="" x:Name="txt_horasTrabajadas" Keyboard="Numeric" Text="0"/>
+                <Label Text="Bachadas" />
+                    <Entry Placeholder="" x:Name="txt_bachadas" Keyboard="Numeric" Text="0"/>
+                <Label Text="Merma PT" />
+                    <Entry Placeholder="" x:Name="txt_mermaPT" Keyboard="Numeric" Text="0" />
+                </StackLayout>
+
+                <Button
+                                      x:Name="btn_agregar"
+                                      Text="Agregar"
+                                      TextColor="White"
+                                      BackgroundColor="Gray"
+                                      BorderRadius="15"
+                                      BorderColor="White"
+                                      BorderWidth="2"
+                                      HeightRequest="40"
+                                      WidthRequest="150"
+                                      HorizontalOptions="CenterAndExpand"
+                                      Padding="5"
+                                  
+                                    />  
+            </StackLayout>
+        </ScrollView>
+   
+</ContentPage>

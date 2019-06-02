@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:INFOYINSA_Mina"
+             x:Class="INFOYINSA_Mina.MainPage"
+             NavigationPage.HasNavigationBar="false">
+
+
+    <StackLayout
+      
+        BackgroundColor="Beige" 
+        Spacing="20"
+        HorizontalOptions="CenterAndExpand">
+        <Label Text="INFOYINSA: Minas" 
+               FontSize="Large" 
+               HorizontalOptions="CenterAndExpand"
+               TextColor="Black"
+               />
+      
+        <StackLayout Spacing="10" Padding="50" VerticalOptions="Center">
+
+            <Label Text="Usuario:" 
+              FontSize="Medium"
+              TextColor="Black"
+                                  />
+            <Entry x:Name="txt_usuario"
+              Placeholder="Usuario"
+              Keyboard="Text"
+                                  />
+            <Label Text="Contraseña:" 
+              FontSize="Medium"
+              TextColor="Black"
+                                  />
+            <Entry x:Name="txt_contrasena"
+              Placeholder="Contraseña"
+              Keyboard="Text"
+              IsPassword="True"
+                                  />
+
+            <Button
+                                  x:Name="btn_login"
+                                  Text="Aceptar"
+                                  TextColor="White"
+                                  BackgroundColor="#FFA733"
+                                  BorderRadius="15"
+                                  BorderColor="White"
+                                  BorderWidth="2"
+                                  HeightRequest="40"
+                                  WidthRequest="150"
+                                  HorizontalOptions="CenterAndExpand"
+                                  Padding="5"
+                                  
+                                />
+        </StackLayout>
+
+        
+    </StackLayout>  
+   
+</ContentPage>

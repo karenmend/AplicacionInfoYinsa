@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="INFOYINSA_Mina.Paros">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Equipo:"
+                    x:Name="lbl_equipos"
+                     />
+            <Picker Title="Equipo" 
+                        x:Name="pck_equipos"
+                        ItemDisplayBinding="equipos"
+                        />
+            <DatePicker x:Name="datePck_fecha" 
+                        
+                            />
+            <Label Text="Causa de Paro" />
+
+            <Picker Title=""
+                    x:Name="pck_causaParo"/>
+
+            <Label Text="Horas en Paro"/>
+            <Entry Placeholder=""   
+                   x:Name="txt_horasParo" Keyboard="Numeric" Text=" ">
+               
+            </Entry>
+            <Button
+                                      x:Name="btn_agregar"
+                                      Text="Agregar"
+                                      TextColor="White"
+                                      BackgroundColor="Gray"
+                                      BorderRadius="15"
+                                      BorderColor="White"
+                                      BorderWidth="2"
+                                      HeightRequest="40"
+                                      WidthRequest="150"
+                                      HorizontalOptions="CenterAndExpand"
+                                      Padding="5"
+                                  
+                                    />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

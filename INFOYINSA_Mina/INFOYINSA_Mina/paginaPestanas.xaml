@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="INFOYINSA_Mina.paginaPestañas"
+            xmlns:local="clr-namespace:INFOYINSA_Mina"
+            NavigationPage.HasNavigationBar="false"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             BarBackgroundColor="#2196F3"
+             BarTextColor="White">
+    
+    <local:TEquipo Title="Horas Equipo"></local:TEquipo>
+    <local:Paros Title="Paros"></local:Paros>
+</TabbedPage>

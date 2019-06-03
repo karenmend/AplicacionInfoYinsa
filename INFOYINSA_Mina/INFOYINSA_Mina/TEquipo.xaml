@@ -18,15 +18,15 @@
                             />
                 <StackLayout Spacing="5" Margin="10">
                     <Label Text="Horas Trabajadas" />
-                    <Entry Placeholder="" x:Name="txt_horasTrabajadas" Keyboard="Numeric" Text="0"/>
+                    <Entry Placeholder="" x:Name="txt_horasTrabajadas" Keyboard="Numeric"/>
                 <Label Text="Bachadas" />
-                    <Entry Placeholder="" x:Name="txt_bachadas" Keyboard="Numeric" Text="0"/>
+                    <Entry Placeholder="" x:Name="txt_bachadas" Keyboard="Numeric"/>
                 <Label Text="Merma PT" />
-                    <Entry Placeholder="" x:Name="txt_mermaPT" Keyboard="Numeric" Text="0" />
+                    <Entry Placeholder="" x:Name="txt_mermaPT" Keyboard="Numeric"/>
                 </StackLayout>
 
                 <Button
-                                      x:Name="btn_agregar"
+                                      x:Name="btn_agregar1"
                                       Text="Agregar"
                                       TextColor="White"
                                       BackgroundColor="Gray"

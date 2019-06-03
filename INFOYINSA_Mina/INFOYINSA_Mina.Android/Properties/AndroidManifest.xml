@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.INFOYINSA_Mina.Android" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="27" />
-	<application android:label="INFOYINSA_Mina.Android" android:icon="@mipmap/launcher_foreground"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="Infoyinsa_Mina.Infoyinsa_Mina" android:installLocation="internalOnly">
+	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="27" />
+	<uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+	<application android:label="INFOYINSA_Mina.Android"></application>
 </manifest>

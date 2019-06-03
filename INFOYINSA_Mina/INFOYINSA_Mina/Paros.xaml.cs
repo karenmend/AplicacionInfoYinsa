@@ -145,7 +145,6 @@ namespace INFOYINSA_Mina
 
         bool validacion()
         {
-            
             if (pck_equipos.SelectedItem == null)
             {
                 DisplayAlert("Advertencia", "Necesitas seleccionar un equipo.", "OK");
@@ -156,8 +155,11 @@ namespace INFOYINSA_Mina
                 DisplayAlert("Advertencia", "Necesitas seleccionar una causa de paro.", "OK");
                 return false;
             }
-            if (!txt_horasParo.Text.ToCharArray().All(Char.IsDigit))
-            {
+            string Str = txt_horasParo.Text.Trim();
+            double Num;
+            bool isNum = double.TryParse(Str, out Num);
+            if (!isNum)
+            { 
                 DisplayAlert("Advertencia", "El formato de Horas en Paro es incorrecto, solo se aceptan numeros.", "OK");
                 return false;
             }

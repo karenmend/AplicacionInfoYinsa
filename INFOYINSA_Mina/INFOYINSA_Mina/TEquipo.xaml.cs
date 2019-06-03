@@ -26,48 +26,51 @@ namespace INFOYINSA_Mina
 		{
 			InitializeComponent ();
             Equipos();
-
-            btn_agregar.Clicked += btn_agregarClicked; 
+          
+                btn_agregar1.Clicked += btn_agregarClicked1;
+          
             
 
         }
 
-        private void btn_agregarClicked(object sender, EventArgs e)
+        private void btn_agregarClicked1(object sender, EventArgs e)
         {
+            txtVacios();
             if (validacion())
             {
                 keyEquipos();
+
                 //datePck_fecha.ToString();
-                //lbl_equipos.Text = datePck_fecha.Date.ToString();
-                
-                try
-                {
-                    txtVacios();
+                lbl_equipos.Text = "hola";
+
+                   try
+                   {
+                       txtVacios();
+
+                       SqlConnection conexion = new SqlConnection(cadenaConexion);//cadena conexion
+
+
+                       string cmdtxt = "if Exists (select * from TRABAJO_EQUIPO where Equipo_Key=" + keyE.ToString() + " and Fecha='" + datePck_fecha.Date.ToString("yyyyMMdd") + "')" +
+                           " update TRABAJO_EQUIPO set HT_Equipo='" + txt_horasTrabajadas.Text + "', Bachadas='" + txt_bachadas.Text + "', MERMASPT='" + txt_mermaPT.Text + "' where Equipo_Key=" + keyE.ToString() +
+                           " and Fecha='" + datePck_fecha.Date.ToString("yyyyMMdd") + "' else insert into TRABAJO_EQUIPO (Equipo_Key, Fecha, HT_Equipo, Bachadas, MERMASPT, H_Paro_Justif, H_Paro_No_Justif) values (" + keyE.ToString() +
+                           ", '" + datePck_fecha.Date.ToString("yyyyMMdd") + "', '" + txt_horasTrabajadas.Text + "', '" + txt_bachadas.Text + "', '" + txt_mermaPT.Text + "',0 ,0)";
+                       conexion.Open();
+                       SqlCommand cmd = new SqlCommand(cmdtxt, conexion);
+                       cmd.ExecuteReader();
+                       conexion.Close();
+
+                       //LimpiarHorasEquipo();
+                       DisplayAlert("Atencion", "Carga Éxitosa", "OK");
+                       Limpiar();
+                   }
+                   catch (Exception ex)
+                   {
+                       DisplayAlert("Atención", ex.ToString(), "OK");
+                       throw;
+                   }
                    
-                    SqlConnection conexion = new SqlConnection(cadenaConexion);//cadena conexion
 
-                    
-                    string cmdtxt = "if Exists (select * from TRABAJO_EQUIPO where Equipo_Key=" + keyE.ToString() + " and Fecha='" + datePck_fecha.Date.ToString("yyyyMMdd") + "')" +
-                        " update TRABAJO_EQUIPO set HT_Equipo='" + txt_horasTrabajadas.Text + "', Bachadas='" + txt_bachadas.Text + "', MERMASPT='" + txt_mermaPT.Text + "' where Equipo_Key=" + keyE.ToString() +
-                        " and Fecha='" + datePck_fecha.Date.ToString("yyyyMMdd") + "' else insert into TRABAJO_EQUIPO (Equipo_Key, Fecha, HT_Equipo, Bachadas, MERMASPT, H_Paro_Justif, H_Paro_No_Justif) values (" + keyE.ToString() +
-                        ", '" + datePck_fecha.Date.ToString("yyyyMMdd") + "', '" + txt_horasTrabajadas.Text + "', '" + txt_bachadas.Text + "', '" + txt_mermaPT.Text + "',0 ,0)";
-                    conexion.Open();
-                    SqlCommand cmd = new SqlCommand(cmdtxt, conexion);
-                    cmd.ExecuteReader();
-                    conexion.Close();
-
-                    //LimpiarHorasEquipo();
-                    DisplayAlert("Atencion", "Carga Éxitosa", "OK");
-                    Limpiar();
-                }
-                catch (Exception ex)
-                {
-                    DisplayAlert("Atención", ex.ToString(), "OK");
-                    throw;
-                }
-
-
-
+                
             }
         }
 
@@ -75,6 +78,7 @@ namespace INFOYINSA_Mina
         {
             if (string.IsNullOrWhiteSpace(txt_bachadas.Text))
             {
+                lbl_equipos.Text = "HOLA";
                 txt_bachadas.Text = "0";
             }
             if(string.IsNullOrWhiteSpace(txt_horasTrabajadas.Text))
@@ -120,24 +124,58 @@ namespace INFOYINSA_Mina
                 DisplayAlert("Advertencia", "Necesitas seleccionar un equipo.", "OK");
                 return false;
             }
-            if (!txt_horasTrabajadas.Text.ToCharArray().All(Char.IsDigit))
-            {
+            else if (!ValidacionHorasTrabajadas())
+            { 
                 DisplayAlert("Advertencia", "El formato de Horas Trabajadas es incorrecto, solo se aceptan numeros.", "OK");
                 return false;
             }
-            else if (!txt_bachadas.Text.ToCharArray().All(Char.IsDigit))
+        
+            else if (!ValidacionBachadas())
             {
                 DisplayAlert("Advertencia", "El formato de Bachadas es incorrecto, solo se aceptan numeros.", "OK");
                 return false;
             }
-            else if (!txt_mermaPT.Text.ToCharArray().All(Char.IsDigit))
+            else if (!ValidacionMermaPT())
             {
                 DisplayAlert("Advertencia", "El formato de Merpa PT es incorrecto, solo se aceptan numeros.", "OK");
                 return false;
             }
-            else if(string.IsNullOrWhiteSpace(txt_bachadas.Text) && string.IsNullOrWhiteSpace(txt_horasTrabajadas.Text) && string.IsNullOrWhiteSpace(txt_mermaPT.Text))
+           /*if(!ValidacionBachadas() && !ValidacionHorasTrabajadas() && !ValidacionMermaPT())
             {
                 DisplayAlert("Advertencia", "Faltan campos por llenar.", "OK");
+                return false;
+            }*/
+            return true;
+        }
+        bool ValidacionHorasTrabajadas()
+        {
+            string Str = txt_horasTrabajadas.Text.Trim();
+            double Num;
+            bool isNum = double.TryParse(Str, out Num);
+            if (!isNum)
+            {
+                return false;
+            }
+                return true;
+        }
+        bool ValidacionBachadas()
+        {
+            string Str = txt_bachadas.Text.Trim();
+            double Num;
+            bool isNum = double.TryParse(Str, out Num);
+            if (!isNum)
+            {
+                return false;
+            }
+            return true;
+        }
+        bool ValidacionMermaPT()
+        {
+            string Str = txt_mermaPT.Text.Trim();
+            double Num;
+            bool isNum = double.TryParse(Str, out Num);
+            if (!isNum)
+            {
                 return false;
             }
             return true;

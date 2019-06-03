@@ -11,4 +11,5 @@
     
     <local:TEquipo Title="Horas Equipo"></local:TEquipo>
     <local:Paros Title="Paros"></local:Paros>
+    <local:ConsumoEnergetico Title="Consumo Energético"></local:ConsumoEnergetico>
 </TabbedPage>

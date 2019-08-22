@@ -15,7 +15,8 @@ namespace INFOYINSA_Mina
     {
         Entry txt_usuarioTx = new Entry();
         Entry txt_contrasenaTx = new Entry();
-        static string cadenaConexion = @"Data Source=192.168.1.73;Initial Catalog=INFOYINSA;Integrated Security = false;User ID = infoYinsa;Password = yinsa2;";
+        
+        static string cadenaConexion; //Cadena de Conexion a la BD
         public MainPage()
         {
             InitializeComponent();
